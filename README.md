@@ -1,6 +1,6 @@
 # Regex by example
 
-[Regular Expressions](https://en.wikipedia.org/wiki/Regular_expression) is a powerful tool for finding and replacing symbols in text. A regular expression itself is just a string composed according to certain rules. This line has two slashes `/ /`, where after the first line there is a special pattern for searching, and after the second – a set of flags that affect the result.
+[Regular Expressions](https://en.wikipedia.org/wiki/Regular_expression) is a powerful tool for finding and replacing symbols in text. A regular expression itself is just a string composed according to certain rules. This string has two slashes `/ /`, where after the first slash there is a special pattern for searching, and after the second – a set of flags that affect the result.
 
 The power of regular expressions will be very useful in many programming tasks. Almost every language now has built-in tools for working with regular expressions. For example [Python](https://docs.python.org/3/library/re.html#regular-expression-examples), [JavaScript](https://javascript.info/regular-expressions), [Go](https://gobyexample.com/regular-expressions), [Kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/), [C#](https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex?view=net-7.0), and so on.
 
