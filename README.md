@@ -220,7 +220,9 @@ The carriage symbol in the regular expression indicates that the search is only 
 /^[0-9]*/gm; // Search for numbers that are at the beginning of a string
 ```
 
-> `1`. Apples x10 <br> > `2`. Cookies x5 <br> > `3`. Eggs x7
+> `1`. Apples x10 <br> 
+> `2`. Cookies x5 <br> 
+> `3`. Eggs x7
 
 ### Search at the end `$`
 
