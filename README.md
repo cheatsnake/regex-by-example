@@ -1,5 +1,7 @@
 # Regex by example
 
+[`English`](https://github.com/cheatsnake/regex-by-example/blob/master/README.md) [`Russian`](https://github.com/cheatsnake/regex-by-example/blob/master/README_RUS.md)
+
 [Regular Expressions](https://en.wikipedia.org/wiki/Regular_expression) is a powerful tool for finding and replacing symbols in text. A regular expression itself is just a string composed according to certain rules. This string has two slashes `/ /`, where after the first slash there is a special pattern for searching, and after the second – a set of flags that affect the result.
 
 The power of regular expressions will be very useful in many programming tasks. Almost every language now has built-in tools for working with regular expressions. For example [Python](https://docs.python.org/3/library/re.html#regular-expression-examples), [JavaScript](https://javascript.info/regular-expressions), [Go](https://gobyexample.com/regular-expressions), [Kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/), [C#](https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex?view=net-7.0), and so on.
@@ -63,7 +65,7 @@ Flags affect the search result. There are only five of them:
 Any character can take the place of a dot. The number of dots can determine the length of words.
 
 ```js
-/t..k/g;
+/t..k/g
 ```
 
 > take look team `took` hike track `teak` time
@@ -73,7 +75,7 @@ Any character can take the place of a dot. The number of dots can determine the 
 Allow you to specify a specific list of characters.
 
 ```js
-/t[aoi]k/g;
+/t[aoi]k/g
 ```
 
 > tek `tok` tdk `tak` `tik` tuk tyk took taoik
@@ -83,7 +85,7 @@ Allow you to specify a specific list of characters.
 Allows you to exclude a certain set of characters from the search, used in conjunction with square brackets.
 
 ```js
-/ba[^td]/g;
+/ba[^td]/g
 ```
 
 > `ban` `bag` bat `bas` bad
@@ -93,7 +95,7 @@ Allows you to exclude a certain set of characters from the search, used in conju
 Specifies the range from the first to the last character (inclusive) in alphabetical order.
 
 ```js
-/[a-d]../g;
+/[a-d]../g
 ```
 
 > ost hst `ast` fst `cst` `bst`
@@ -101,7 +103,7 @@ Specifies the range from the first to the last character (inclusive) in alphabet
 It works the same way with numbers:
 
 ```js
-/201[5-9]/g;
+/201[5-9]/g
 ```
 
 > 2010 2012 `2015` `2017` `2019` 2022
@@ -111,7 +113,7 @@ It works the same way with numbers:
 An asterisk after a character indicates that the character may be missing or match one or more times.
 
 ```js
-/wo*w/g;
+/wo*w/g
 ```
 
 > `wow` waw wiw `woooow` wawe `ww` `woow`
@@ -121,7 +123,7 @@ An asterisk after a character indicates that the character may be missing or mat
 A plus after a character indicates that the character must be present one or more times.
 
 ```js
-/go+gle/g;
+/go+gle/g
 ```
 
 > `google` ggle `gogle` gugle g00gle `goooogle`
@@ -131,7 +133,7 @@ A plus after a character indicates that the character must be present one or mor
 A question mark after a character indicates that the character is optional (may be absent or occur only once).
 
 ```js
-/bou?nd/g;
+/bou?nd/g
 ```
 
 > `bond` `bound` bouuund boynd
@@ -141,7 +143,7 @@ A question mark after a character indicates that the character is optional (may 
 To specify the exact number of repetitions, you must write curly brackets with the desired number after the symbol.
 
 ```js
-/bo{3}m/g;
+/bo{3}m/g
 ```
 
 > boom bom `booom` bm boooom
@@ -151,7 +153,7 @@ To specify the exact number of repetitions, you must write curly brackets with t
 To specify a range of repetitions, you must write a curly bracket after the symbol with the desired range, separated by a comma.
 
 ```js
-/lo{2,4}k/g;
+/lo{2,4}k/g
 ```
 
 > lok `look` lk `loook` `looook` loooooook
@@ -163,13 +165,13 @@ The upper bound can be omitted. For example, the entry `a{3,}` says that the cha
 Brackets allow you to group any sequence of characters so that you can refer to them later using the expression `\number`, where the number is the sequence number of the grouped sequence.
 
 ```js
-/(la)-\1{2}-\1{3}/g; // Group the expression "la" and then, refer to it with "\1"
+/(la)-\1{2}-\1{3}/g // Group the expression "la" and then, refer to it with "\1"
 ```
 
 > la-laaa-`la-lala-lalala`-lalala-la-la-la
 
 ```js
-/(la)-\1-(laa)-\2/g;
+/(la)-\1-(laa)-\2/g
 ```
 
 > laa-la-laa-`la-la-laa-laa`-lalal
@@ -177,7 +179,7 @@ Brackets allow you to group any sequence of characters so that you can refer to 
 The `(?:)` construction is used to ignore the saving of the group.
 
 ```js
-/(?:abc)-(test),\1,\1/g; // In this case the group "abc" will not be saved, so the first index points to "test".
+/(?:abc)-(test),\1,\1/g // In this case the group "abc" will not be saved, so the first index points to "test".
 ```
 
 > abc,test-`abc-test,test,test`-abc-test
@@ -185,7 +187,7 @@ The `(?:)` construction is used to ignore the saving of the group.
 You can give any name to groups. For this purpose the construction - `(?P<Name>...)` is used, where `Name` is the name of the group, `...` - any sequence of characters. To refer to named groups use the construction - `(?P=Name)`.
 
 ```js
-/(?P<seven>7{3})-(?P=seven){2}-(?P=seven)/g;
+/(?P<seven>7{3})-(?P=seven){2}-(?P=seven)/g
 ```
 
 > 7777-77-7777777-`777-777777-777`-777-7-7-7-7777-7
@@ -197,7 +199,7 @@ If you have trouble understanding the grouping, I suggest [watch this video](htt
 The vertical slash allows you to specify alternatives to search for. This is somewhat similar to using square brackets `[abc]`, but only vertical slash can handle whole words and expressions, not just individual characters.
 
 ```js
-/yes|no/g;
+/yes|no/g
 ```
 
 > `yes`,maybe,`no`,idk,ok
@@ -207,7 +209,7 @@ The vertical slash allows you to specify alternatives to search for. This is som
 In order to use the special characters `{} [] / \ + *. $ ^ |?`, you must put a slash `\` in front of it.
 
 ```js
-/\.|\?/g; // Search for dots "." or question marks "?"
+/\.|\?/g // Search for dots "." or question marks "?"
 ```
 
 > What now`?` What next`?` Times up`.` Wake up`.`
@@ -217,7 +219,7 @@ In order to use the special characters `{} [] / \ + *. $ ^ |?`, you must put a s
 The carriage symbol in the regular expression indicates that the search is only performed at the beginning of lines.
 
 ```js
-/^[0-9]*/gm; // Search for numbers that are at the beginning of a string
+/^[0-9]*/gm // Search for numbers that are at the beginning of a string
 ```
 
 > `1`. Apples x10 <br> 
@@ -229,7 +231,7 @@ The carriage symbol in the regular expression indicates that the search is only 
 The dollar symbol in the regular expression indicates that the search is done only by the end of the string.
 
 ```js
-/com$|net$/gm;
+/com$|net$/gm
 ```
 
 > google.`com` <br>
@@ -246,11 +248,11 @@ There are built-in notations to make it easier to find an entire class of symbol
 The two entries below are equivalent.
 
 ```js
-/[a-zA-Z0-9_]/g;
+/[a-zA-Z0-9_]/g
 ```
 
 ```js
-/\w/g;
+/\w/g
 ```
 
 > `some` `random` `words` `for` `example` #@$% \*%(^)`_`+# `1234`
@@ -258,11 +260,11 @@ The two entries below are equivalent.
 #### Any non verbal symbol `\W`
 
 ```js
-/[^a-zA-Z0-9_]/g;
+/[^a-zA-Z0-9_]/g
 ```
 
 ```js
-/\W/g;
+/\W/g
 ```
 
 > developer_2022`@`gmail`.`com
@@ -270,11 +272,11 @@ The two entries below are equivalent.
 #### Any number `\d`
 
 ```js
-/[0-9]/g;
+/[0-9]/g
 ```
 
 ```js
-/\d/g;
+/\d/g
 ```
 
 > developer\_`2022`@gmail.com
@@ -282,11 +284,11 @@ The two entries below are equivalent.
 #### Any character except numbers `\D`
 
 ```js
-/[^0-9]/g;
+/[^0-9]/g
 ```
 
 ```js
-/\D/g;
+/\D/g
 ```
 
 > `developer\_`2022`@gmail.com`
@@ -296,21 +298,21 @@ The two entries below are equivalent.
 Spaces also include various line break characters.
 
 ```js
-/[\r\n\t\f\v ]/g;
+/[\r\n\t\f\v ]/g
 ```
 
 ```js
-/\s/g;
+/\s/g
 ```
 
 #### Any character except a space `\S`
 
 ```js
-/[^\r\n\t\f\v ]/g;
+/[^\r\n\t\f\v ]/g
 ```
 
 ```js
-/\S/g;
+/\S/g
 ```
 
 ### Lookarounds
@@ -322,7 +324,7 @@ In order to find a phrase that should be before or after another phrase, positio
 To find an expression X followed by an expression Y, use the construction `X(?=Y)`.
 
 ```js
-/\d+(?=€)/g;
+/\d+(?=€)/g
 ```
 
 > 200$ `750`€ 100$ `330`€ 550$
@@ -330,7 +332,7 @@ To find an expression X followed by an expression Y, use the construction `X(?=Y
 To find an expression X after which there is NOT an expression Y, use the construction `X(?!Y)`.
 
 ```js
-/\d{4,}(?!€)/g;
+/\d{4,}(?!€)/g
 ```
 
 > This car was costed about 7000€ in `2015`
@@ -340,7 +342,7 @@ To find an expression X after which there is NOT an expression Y, use the constr
 To find an expression X preceded by an expression Y, use the construction `(?<=Y)X`.
 
 ```js
-/(?<=:)\d+/g;
+/(?<=:)\d+/g
 ```
 
 > { "id":`4`, "value":`123`, name:"test" }
@@ -348,7 +350,7 @@ To find an expression X preceded by an expression Y, use the construction `(?<=Y
 To find an expression X that is NOT preceded by an expression Y, use the construction `(?<!Y)X`.
 
 ```js
-/(?<!\$)\d+/g;
+/(?<!\$)\d+/g
 ```
 
 > $5 $6 $7 `2019` `2009` `1999`
